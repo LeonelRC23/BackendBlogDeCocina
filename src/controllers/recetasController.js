@@ -101,7 +101,7 @@ export const eliminarReceta = async (req, res) => {
     const buscarReceta = await recetaModel.findById(id);
     if (!buscarReceta) {
       return res.status(404).json({
-        mensaje: 'No se pudo eliminar la receta, el id es incorrecto',
+        mensaje: 'No se pudo eliminar la receta, receta no encontrada',
       });
     }
     await recetaModel.findByIdAndDelete(id);
