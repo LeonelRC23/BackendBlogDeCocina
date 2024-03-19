@@ -2,8 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import 'dotenv/config';
-import './database/config.js';
-import { routerReceta } from './routes/recetasRoutes.js';
+import './src/database/config.js';
+import { routerReceta } from './src/routes/recetasRoutes.js';
 
 const app = express();
 
