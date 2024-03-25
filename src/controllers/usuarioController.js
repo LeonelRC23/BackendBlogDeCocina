@@ -1,5 +1,8 @@
 import { usuarioModel } from '../database/models/usuarioSchema.js';
 import bcrypts from 'bcryptjs';
+import { tokenSign } from '../helpers/generateToken.js';
+
+//emailValidacion es el objeto, cambiarle el nombre
 
 export const register = async (req, res) => {
   try {
@@ -39,8 +42,10 @@ export const login = async (req, res) => {
         emailValidacion.password
       );
       if (passwordValidacion) {
+        const sesionToken = await tokenSign(emailValidacion);
         res.status(200).json({
           mensaje: emailValidacion,
+          token: sesionToken,
         });
       } else {
         res.status(404).json({
